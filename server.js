@@ -11,7 +11,7 @@ const app = express()
 app.use(morgan('tiny'))
 
 // connect to database
-mongoose.connect("mongodb://localhost:27017/NearbyShops")
+mongoose.connect("mongodb://localhost:27017/NearbyShops", { useNewUrlParser: true })
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
