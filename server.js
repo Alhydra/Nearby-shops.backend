@@ -6,8 +6,11 @@ const mongoose   = require('mongoose');
 const secret = require("./config")
 
 //Routes
-const authRouter = require("./app/Routes/AuthRouter")
+const authRouter = require("./app/Routes/authRouter")
 const userRouter = require("./app/Routes/userRouter")
+const shopRouter = require("./app/Routes/shopRouter")
+
+
 
 // create app instance
 const app = express()
@@ -32,10 +35,12 @@ app.get("/", (req,res)=>{
     res.send("Hello world")
 })
 
-// Authentification Route
+// authentification Route
 app.use("/auth",authRouter)
 // user Router
 app.use("/user",userRouter)
+// shop Router
+app.use("/shop",shopRouter)
 
 // Launch server
 var port = process.env.PORT || 3001;
