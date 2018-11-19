@@ -3,5 +3,16 @@
   "version": "1.0.0",
   "main": "server.js",
   "author": "Youssef El Habchi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "moment": "^2.21.0",
+    "mongoose": "^5.0.11",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  }
 }

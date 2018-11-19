@@ -1,0 +1,32 @@
+const express = require("express")
+const morgan = require("morgan")
+const bodyParser = require("body-parser")
+const mongoose   = require('mongoose');
+
+
+// create app instance
+const app = express()
+
+// log requests
+app.use(morgan('tiny'))
+
+// connect to database
+mongoose.connect("mongodb://localhost:27017/NearbyShops")
+
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// main route
+app.get("/", (req,res)=>{
+
+    res.send("Hello world")
+})
+
+// Launch server
+var port = process.env.PORT || 3001;
+app.listen(port)
+console.log('Server runs on port ' + port);
+
+
