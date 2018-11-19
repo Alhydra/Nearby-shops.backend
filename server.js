@@ -1,11 +1,19 @@
+// Initial Instances 
 const express = require("express")
 const morgan = require("morgan")
 const bodyParser = require("body-parser")
 const mongoose   = require('mongoose');
+const secret = require("./config")
 
+//Routes
+const authRouter = require("./app/Routes/AuthRouter")
+const userRouter = require("./app/Routes/userRouter")
 
 // create app instance
 const app = express()
+
+// add secret
+app.set("superSecret", secret)
 
 // log requests
 app.use(morgan('tiny'))
@@ -23,6 +31,11 @@ app.get("/", (req,res)=>{
 
     res.send("Hello world")
 })
+
+// Authentification Route
+app.use("/auth",authRouter)
+// user Router
+app.use("/user",userRouter)
 
 // Launch server
 var port = process.env.PORT || 3001;
