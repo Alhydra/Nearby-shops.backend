@@ -4,16 +4,21 @@ const morgan = require("morgan")
 const bodyParser = require("body-parser")
 const mongoose   = require('mongoose');
 const secret = require("./config")
+const cors = require("cors")
 
 //Routes
 const authRouter = require("./app/Routes/authRouter")
 const userRouter = require("./app/Routes/userRouter")
 const shopRouter = require("./app/Routes/shopRouter")
+const setupRouter = require("./app/Routes/setupRouter")
 
 
 
 // create app instance
 const app = express()
+
+//enable cors
+app.use(cors())
 
 // add secret
 app.set("superSecret", secret)
@@ -41,6 +46,8 @@ app.use("/auth",authRouter)
 app.use("/user",userRouter)
 // shop Router
 app.use("/shop",shopRouter)
+//setup router
+app.use("/setup",setupRouter)
 
 // Launch server
 var port = process.env.PORT || 3001;
