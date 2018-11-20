@@ -24,18 +24,21 @@ userRouter.post("/",(req,res)=>{
     })
 })
 
-// GET ONE USER
-userRouter.get("/:user_email", (req,res)=>{
+// GET USER DATA
+userRouter.get("/",(req,res)=>{
+    const email = req.decoded.email
+    console.log("decoded",req.decoded)
+    console.log("email",req.decoded.email)
 
-    User.findById(req.params.user_email, (err,user)=>{
+    User.findOne({email:email}, (err,user)=>{
         if (err){
             res.send(err.message)
         }else{
-            
             res.send(user)
         }
     })
 })
+
 
 module.exports = userRouter
 

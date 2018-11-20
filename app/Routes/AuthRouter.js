@@ -27,21 +27,23 @@ authRouter.post("/", (req,res)=>{
             }else{
 
 
-                
-                const token = jwt.sign({},config.secret,{
+                const payload = {email:user.email}
+                const token = jwt.sign(payload,config.secret,{
                     expiresIn: "30d"
                 })
 
                 res.json({
                     success: true,
                     message: 'Enjoy your token!',
-                    token: token
+                    token: token,
                 })
             }
         }
 
     })
 })
+
+
 
 module.exports =authRouter
 
