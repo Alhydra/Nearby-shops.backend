@@ -17,9 +17,9 @@ userRouter.post("/",(req,res)=>{
 
     user.save((err)=>{
         if(err){
-            res.send(err.message)
+            res.send({success:false,message:err.message})
         }else{
-            res.send({status:"User added",user})
+            res.send({success:true,status:"User added",user})
         }
     })
 })
