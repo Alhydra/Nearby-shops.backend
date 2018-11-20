@@ -36,7 +36,10 @@ authRouter.post("/", (req,res)=>{
                     success: true,
                     message: 'Enjoy your token!',
                     token: token,
-                    user
+                    coord:{
+                        lat:user.lat,
+                        lng:user.lng
+                    }
                 })
             }
         }
