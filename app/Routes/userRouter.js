@@ -24,6 +24,18 @@ userRouter.post("/",(req,res)=>{
     })
 })
 
+// GET ONE USER
+userRouter.get("/:user_email", (req,res)=>{
+
+    User.findById(req.params.user_email, (err,user)=>{
+        if (err){
+            res.send(err.message)
+        }else{
+            
+            res.send(user)
+        }
+    })
+})
 
 module.exports = userRouter
 
