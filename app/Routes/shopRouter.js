@@ -5,7 +5,8 @@ const Shop = require("../models/Shop.js")
 
 //GET ALL SHOPS
 shopRouter.get("/",(req,res)=>{
-    Shop.find({},(err,shops)=>{
+    if(req.decoded){
+        Shop.find({},(err,shops)=>{
         if (err){
             res.send({ success: false, message: err.message})
         }else{
@@ -13,6 +14,8 @@ shopRouter.get("/",(req,res)=>{
         }
         
     })
+    }
+    
 
 })
 

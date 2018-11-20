@@ -60,7 +60,7 @@ app.use("/api",(req,res,next)=>{
 
         })
     }else{
-        req.decoded = decoded
+        req.decoded = null
 
     }
     next()
