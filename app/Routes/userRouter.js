@@ -11,6 +11,9 @@ userRouter.post("/",(req,res)=>{
     const user = new User()
     user.email = req.body.email
     user.password = req.body.password
+    user.lat=req.body.lat
+    user.lng=req.body.lng
+
 
     user.save((err)=>{
         if(err){
