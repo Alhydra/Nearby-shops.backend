@@ -20,6 +20,24 @@ shopRouter.get("/",(req,res)=>{
 })
 
 
+// UPDAT ONE SHOP
+shopRouter.put("/:shop_id",(req,res)=>{
+
+    Shop.findByIdAndUpdate(req.params.shop_id, req.body ,{new: true}, ((err,shop)=>{
+
+        console.log("body",1,req.body)
+        
+        if(err){
+            
+            res.send(err.message)
+        }else{
+            
+            res.send({status:"Shop updated",shop})
+        }
+        
+        
+    }))
+})
 
 module.exports = shopRouter
 
